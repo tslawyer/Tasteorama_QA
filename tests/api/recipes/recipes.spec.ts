@@ -1,5 +1,5 @@
+import { ApiClient } from "./../ApiClient";
 import { test, expect } from "@playwright/test";
-import { ApiClient } from "./ApiClient";
 
 test("Recipe creation without login", async ({ request }) => {
   const api = new ApiClient(request);
