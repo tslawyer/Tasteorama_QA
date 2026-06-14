@@ -1,5 +1,5 @@
 import { APIRequestContext } from "./../../node_modules/playwright-core/types/types.d";
-import type { CreateDataBody, LoginData } from "./types/types";
+import type { CreateDataBody, LoginData, RegisterData } from "./types/types";
 
 export class ApiClient {
   private token?: string;
@@ -24,6 +24,13 @@ export class ApiClient {
     const respBody = await response.json();
     this.token = respBody.data.accessToken;
 
+    return response;
+  }
+  async register(data: RegisterData) {
+    const response = await this.request.post(
+      "https://cook-api-dtdl.onrender.com/api/auth/register",
+      { data },
+    );
     return response;
   }
 }
