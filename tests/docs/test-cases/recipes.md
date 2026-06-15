@@ -17,7 +17,7 @@ API: https://cook-api-dtdl.onrender.com
 
 ### Expected Result
 
-401 Unathorized
+401 Unauthorized
 
 ---
 
