@@ -32,6 +32,7 @@ Registration with email that already in use
 ### Preconditions
 
 API: https://cook-api-dtdl.onrender.com
+<br>
 User exists in system
 
 ### Steps
