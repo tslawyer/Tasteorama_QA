@@ -62,7 +62,7 @@ test("Password length equals 8 character", async ({ request }) => {
   const response = await api.register({
     name: "Abracadabra",
     email: `test_${Date.now() + 125}@mail.com`,
-    password: "123456678",
+    password: "12345678",
   });
   const body = await response.json();
   expect(response.status()).toBe(201);
