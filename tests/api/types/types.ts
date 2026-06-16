@@ -14,8 +14,8 @@ export type CreateDataBody = {
 };
 
 export type LoginData = {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 };
 
 export type RegisterData = {
