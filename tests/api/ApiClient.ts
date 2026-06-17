@@ -29,6 +29,12 @@ export class ApiClient {
       "https://cook-api-dtdl.onrender.com/api/ingredients",
     );
   }
+  async getCurrentUser() {
+    return this.request.get(
+      "https://cook-api-dtdl.onrender.com/api/users/currentUser",
+      { headers: this.token ? { Authorization: `Bearer ${this.token}` } : {} },
+    );
+  }
 
   async login(data: LoginData) {
     const response = await this.request.post(
