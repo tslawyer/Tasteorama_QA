@@ -24,6 +24,11 @@ export class ApiClient {
       "https://cook-api-dtdl.onrender.com/api/categories",
     );
   }
+  async getAvaliableIngredients() {
+    return this.request.get(
+      "https://cook-api-dtdl.onrender.com/api/ingredients",
+    );
+  }
 
   async login(data: LoginData) {
     const response = await this.request.post(

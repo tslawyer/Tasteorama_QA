@@ -63,3 +63,12 @@ test("Get recipe categories", async ({ request }) => {
   expect(response.status()).toBe(200);
   expect(body.data).not.toBeNull();
 });
+
+test("Get available ingredients", async ({ request }) => {
+  const api = new ApiClient(request);
+  const response = await api.getAvaliableIngredients();
+  const body = await response.json();
+
+  expect(response.status()).toBe(200);
+  expect(body.data).not.toBeNull();
+});
