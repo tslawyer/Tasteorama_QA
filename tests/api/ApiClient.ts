@@ -16,6 +16,15 @@ export class ApiClient {
     });
   }
 
+  async getAllRecipes() {
+    return this.request.get("https://cook-api-dtdl.onrender.com/api/recipes");
+  }
+  async getRecipeCategories() {
+    return this.request.get(
+      "https://cook-api-dtdl.onrender.com/api/categories",
+    );
+  }
+
   async login(data: LoginData) {
     const response = await this.request.post(
       "https://cook-api-dtdl.onrender.com/api/auth/login",

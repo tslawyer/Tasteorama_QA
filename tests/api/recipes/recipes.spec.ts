@@ -45,3 +45,21 @@ test("Recipe creation after login", async ({ request }) => {
 
   expect(response.status()).toBe(200);
 });
+
+test("Get all recipes", async ({ request }) => {
+  const api = new ApiClient(request);
+  const response = await api.getAllRecipes();
+  const body = await response.json();
+
+  expect(response.status()).toBe(200);
+  expect(body.result.data).not.toBeNull();
+});
+
+test("Get recipe categories", async ({ request }) => {
+  const api = new ApiClient(request);
+  const response = await api.getRecipeCategories();
+  const body = await response.json();
+
+  expect(response.status()).toBe(200);
+  expect(body.data).not.toBeNull();
+});
