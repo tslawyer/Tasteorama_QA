@@ -72,3 +72,34 @@ test("Get available ingredients", async ({ request }) => {
   expect(response.status()).toBe(200);
   expect(body.data).not.toBeNull();
 });
+
+test("Get recipe by id", async ({ request }) => {
+  const api = new ApiClient(request);
+  const ID = "6462a8f74c3d0ddd288980b1";
+  const response = await api.getRecipeById(ID);
+  const body = await response.json();
+  expect(response.status()).toBe(200);
+  expect(body.message).toBe("Successfully found recipe!");
+  expect(body.data).toHaveProperty("_id");
+  expect(body.data.title).toBe("Japanese Katsudon");
+  expect(body.data._id).not.toBeNull();
+});
+
+test("Get my recipes without login", async ({ request }) => {
+  const api = new ApiClient(request);
+  const response = await api.getMyRecipes();
+  expect(response.status()).toBe(401);
+});
+
+test("Get my recipes after login", async ({ request }) => {
+  const api = new ApiClient(request);
+  await api.login({
+    email: "nikita7251@gmail.com",
+    password: "something",
+  });
+  const response = await api.getMyRecipes();
+  const body = await response.json();
+  expect(response.status()).toBe(200);
+  expect(Array.isArray(body.data)).toBe(true);
+  expect(body.total).toBeGreaterThanOrEqual(0);
+});
