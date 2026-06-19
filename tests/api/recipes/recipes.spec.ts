@@ -21,7 +21,7 @@ test("Recipe creation without login", async ({ request }) => {
   expect(response.status()).toBe(401);
 });
 
-test("Recipe creation after login", async ({ request }) => {
+test("Recipe creation after login", { tag: "@smoke" }, async ({ request }) => {
   const api = new ApiClient(request);
   await api.login({
     email: "nikita7251@gmail.com",
@@ -46,7 +46,7 @@ test("Recipe creation after login", async ({ request }) => {
   expect(response.status()).toBe(200);
 });
 
-test("Get all recipes", async ({ request }) => {
+test("Get all recipes", { tag: "@smoke" }, async ({ request }) => {
   const api = new ApiClient(request);
   const response = await api.getAllRecipes();
   const body = await response.json();
@@ -55,7 +55,7 @@ test("Get all recipes", async ({ request }) => {
   expect(body.result.data).not.toBeNull();
 });
 
-test("Get recipe categories", async ({ request }) => {
+test("Get recipe categories", { tag: "@smoke" }, async ({ request }) => {
   const api = new ApiClient(request);
   const response = await api.getRecipeCategories();
   const body = await response.json();
@@ -64,7 +64,7 @@ test("Get recipe categories", async ({ request }) => {
   expect(body.data).not.toBeNull();
 });
 
-test("Get available ingredients", async ({ request }) => {
+test("Get available ingredients", { tag: "@smoke" }, async ({ request }) => {
   const api = new ApiClient(request);
   const response = await api.getAvaliableIngredients();
   const body = await response.json();
@@ -73,7 +73,7 @@ test("Get available ingredients", async ({ request }) => {
   expect(body.data).not.toBeNull();
 });
 
-test("Get recipe by id", async ({ request }) => {
+test("Get recipe by id", { tag: "@smoke" }, async ({ request }) => {
   const api = new ApiClient(request);
   const ID = "6462a8f74c3d0ddd288980b1";
   const response = await api.getRecipeById(ID);
@@ -91,7 +91,7 @@ test("Get my recipes without login", async ({ request }) => {
   expect(response.status()).toBe(401);
 });
 
-test("Get my recipes after login", async ({ request }) => {
+test("Get my recipes after login", { tag: "@smoke" }, async ({ request }) => {
   const api = new ApiClient(request);
   await api.login({
     email: "nikita7251@gmail.com",
