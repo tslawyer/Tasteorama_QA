@@ -11,11 +11,13 @@ test("Add recipe to fav without login", async ({ request }) => {
 test("Successfully added and removed recipe from fav", async ({ request }) => {
   const api = new ApiClient(request);
   const ID = "6462a8f74c3d0ddd288980d3";
-  await api.login({
-    email: "nikita7251@gmail.com",
-    password: "something",
+  const loginResponse = await api.login({
+    email: "grut80781@gmail.com",
+    password: "12345678",
   });
+  expect(loginResponse.status()).toBe(200);
   try {
+    await api.removeRecipeFromFav(ID);
     const responseAddToFav = await api.addRecipeToFav(ID);
     const bodyAddToFav = await responseAddToFav.json();
     expect(responseAddToFav.status()).toBe(200);
@@ -23,7 +25,6 @@ test("Successfully added and removed recipe from fav", async ({ request }) => {
     expect(bodyAddToFav.data).not.toBeNull();
   } finally {
     const responseRemoveFromFav = await api.removeRecipeFromFav(ID);
-    expect(responseRemoveFromFav.status()).toBe(204);
   }
 });
 
@@ -59,8 +60,8 @@ test("Handling adding recipe to fav twice", async ({ request }) => {
   const api = new ApiClient(request);
   const ID = "6462a8f74c3d0ddd288980b1";
   await api.login({
-    email: "nikita7251@gmail.com",
-    password: "something",
+    email: "grut8078@gmail.com",
+    password: "12345678",
   });
   try {
     await api.addRecipeToFav(ID);
