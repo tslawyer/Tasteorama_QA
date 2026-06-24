@@ -48,7 +48,13 @@ The framework covers:
 
 ---
 
-## 🚀 Test Coverage
+## 📈 Test Coverage Overview
+
+| Test Type             | Count |
+| --------------------- | ----- |
+| API Tests             | 26    |
+| UI Tests              | 4     |
+| Total Automated Tests | 30    |
 
 ### UI Testing
 
